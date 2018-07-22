@@ -7,15 +7,15 @@ define('MACHINA_INTERNAL', true);
 unset($CFG);
 global $CFG;
 $CFG = new stdClass();
-$CFG->dbhost     = 'localhost';
+$CFG->dbhost     = 'localhost:8889';
 $CFG->dbname     = 'machina';
 $CFG->dbuser     = 'machina_user';
 $CFG->dbpass     = 'vivatlingualatina';
-$CFG->wwwroot    = 'https://machina-bmizepatterson.c9users.io';
+$CFG->wwwroot    = 'localhost:8888/machina';
 $CFG->dirroot    = dirname(dirname(__FILE__));
 
 // File permissions on created directories in the $CFG->dataroot
-$CFG->dataroot  = '/home/ubuntu/machinadata';
+$CFG->dataroot  = '/Applications/MAMP/machinadata';
 $CFG->directorypermissions = 02777;
 if (!isset($CFG->filepermissions)) {
     $CFG->filepermissions = ($CFG->directorypermissions & 0666); // strip execute flags
@@ -35,8 +35,8 @@ if (!is_writable($CFG->dataroot)) {
 // Set httpswwwroot default value (this variable will replace $CFG->wwwroot
 // inside some URLs used in pages that call $PAGE->https_required().
 $CFG->httpswwwroot = $CFG->wwwroot;
-$CFG->loginhttps = true;
-$CFG->sslproxy = true; // Cloud9 appears to tunnel an http connection through their own TLS cert, and forces the internal connection to use HTTP
+$CFG->loginhttps = false;
+$CFG->sslproxy = false;
 $CFG->libdir = $CFG->dirroot .'/lib';
 $CFG->tempdir = "$CFG->dataroot/temp";
 $CFG->cachedir = "$CFG->dataroot/cache";
