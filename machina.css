@@ -1,0 +1,95 @@
+#footer {
+	padding-bottom:16px;
+}
+
+/* W3.CSS MODS */
+.w3-section-extra {
+	margin-top:32px;
+	margin-bottom:32px;
+}
+
+/* GOOGLE MATERIAL ICONS MODS */
+.material-icons {
+	vertical-align: -14%;
+}
+.notify .material-icons {
+	vertical-align: -20%;
+}
+
+/* NOTIFICATIONS */
+#notify {
+	line-height:1;
+}
+.notificationgreeting {
+	font-weight:bold;
+	font-style:italic;
+}
+
+/* DEBUGGING AND ERRORS */
+.pageinfo {
+	font-size:inherit;
+}
+.debuggingmessage {
+	margin-top:16px;
+	font-size:75%;
+	overflow-x:auto;
+}
+.backtrace {
+	background-color:#EEEEEE;
+	border-top: 1px solid #CCC;
+}
+.backtrace h4 {
+	margin-bottom:0;
+	margin-left:16px;
+}
+.backtrace ul {
+	margin:0;
+	padding-top:16px;
+	padding-bottom:16px;
+}
+.ob {
+	overflow-x: auto;
+}
+.performanceinfo p {
+	margin:0;
+}
+
+/* CONJUGATION TABLES */
+.conjugationtableheader {
+	text-align:center;
+}
+.conjugationtable {
+	font-size: 120%;
+}
+.conjugationtable table {
+	margin: 16px auto;
+	width:100%;
+}
+.conjugationtable td, .conjugationtable th {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.conjugationtable .tenseheader {
+	color:white;
+	background-color:black;
+}
+.conjugationtable .numberheader {
+	font-size: 80%;
+}
+
+/* TEXT TRANSFORMATIONS */
+.citelatin {
+	font-weight: bold;
+}
+.stem {
+	color: black;
+}
+.ending {
+	color: blue;
+	font-weight:bold;
+}
+
+/* TODO
+
+
+*/
