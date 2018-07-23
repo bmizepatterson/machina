@@ -1215,7 +1215,7 @@ function update_user_login_times() {
     //       the login event means that these fields were updated.
     
     $sql .= 'lastlogin = :lastlogin, currentlogin = :currentlogin, lastaccess = :lastaccess, lastip = :lastip) WHERE id = :id';
-    $DB->update_record($sql, $user)
+    $DB->update_record($sql, $user);
     return true;
 }
 
