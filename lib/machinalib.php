@@ -121,12 +121,12 @@ function pr($var, $title = '', $var_dump = false) {
         // Remove the first line of var_dump, which is a trace to this function
         $pos = strpos($output, "\n");
         if ($pos !== false) {
-            $output = substr($output, $pos);
+            $output = htmlentities(substr($output, $pos));
         }
     } else {
-        $output = print_r($var, true);
+        $output = htmlentities(print_r($var, true));
     }
-    return "$title<pre>$output</pre>";
+    return "$title<div style='overflow:auto;'><pre>$output</pre></div>";
 }
 
 /**
