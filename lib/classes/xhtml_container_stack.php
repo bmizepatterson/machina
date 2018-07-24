@@ -69,8 +69,8 @@ class xhtml_container_stack {
         	}
         }
         
-        $container->openhtml = '<'.$tag.$attr.'><!--'.$name.'-->';
-    	$container->closehtml = "</$tag><!--$name-->";
+        $container->openhtml = "<$tag$attr><!--open $name-->\n";
+    	$container->closehtml = "\n</$tag><!--close $name-->\n";
         
         if ($this->isdebugging) {
             $this->log('Open', $tag, $name);
