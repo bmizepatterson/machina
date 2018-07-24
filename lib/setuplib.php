@@ -213,9 +213,9 @@ function default_exception_handler($ex) {
         // default exception handler MUST not throw any exceptions!!
         // the problem here is we do not know if page already started or not
         // so we just print at least something instead of "Exception thrown without a stack frame in Unknown on line 0":-(
-        echo early_error_content($info->errorcode, $info->description, $info->backtrace, $info->debuginfo);
+        echo early_renderer::early_error_content($info->errorcode, $info->description, $info->backtrace, $info->debuginfo);
         $outinfo = get_exception_info($out_ex);
-        echo early_error_content($outinfo->errorcode, $outinfo->description, $outinfo->backtrace, $outinfo->debuginfo);
+        echo early_renderer::early_error_content($outinfo->errorcode, $outinfo->description, $outinfo->backtrace, $outinfo->debuginfo);
     }
     exit; // General error code
 }
