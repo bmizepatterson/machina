@@ -303,16 +303,17 @@ class base_renderer {
         $output .= $this->opencontainers->push('div', 'footer', array('id'=>'footer'));
         
         if ($CFG->debugdeveloper) {
-            // Print special developer debug information
+            // $PAGE INFO
 			$output .= $this->opencontainers->push('div', 'debuginfo', array('class'=>'w3-small'));
 			$output .= '<button onclick="expand_accordion('."'page_info'".')" class="w3-button w3-black w3-block w3-left-align">$PAGE Info</button>' .
 					   '<div id="page_info" class="w3-container w3-hide"><pre>'.htmlentities(print_r($PAGE, true)).'</pre></div>';
-					  
+			
+            // PERFORMANCE INFO		  
 			$perf_info = get_performance_info();
 			$output .= '<button onclick="expand_accordion('."'perf_info'".')" class="w3-button w3-black w3-block w3-left-align">Performance Info</button>' .
                        '<div id="perf_info" class="performanceinfo w3-container w3-hide">' . $perf_info['html'] . '</div>';
 			
-			// Print a link to phpmyadmin
+			// LINKS TO phpmyadmin and w3css
 			$output .= '<div>
 						<a class="w3-button" href="/phpmyadmin/index.php" target="_blank">phpMyAdmin</a>
 						<a class="w3-button" href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3 CSS</a>
