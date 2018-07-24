@@ -305,7 +305,7 @@ class base_renderer {
         
         if ($CFG->debugdeveloper) {
             // Print special developer debug information
-			$output .= $this->opencontainers->push('div', 'debuginfo');
+			$output .= $this->opencontainers->push('div', 'debuginfo', array('class'=>'w3-small'));
 			$output .= '<button onclick="expand_accordion('."'page_info'".')" class="w3-button w3-black w3-block w3-left-align">$PAGE Info</button>' .
 					   '<div id="page_info" class="w3-container w3-hide"><pre>'.htmlentities(print_r($PAGE, true)).'</pre></div>';
 					  
