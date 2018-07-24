@@ -11,7 +11,7 @@ $CFG->dbhost     = 'localhost:8889';
 $CFG->dbname     = 'machina';
 $CFG->dbuser     = 'machina_user';
 $CFG->dbpass     = 'vivatlingualatina';
-$CFG->wwwroot    = 'localhost:8888/machina';
+$CFG->wwwroot    = 'http://localhost:8888/machina';
 $CFG->dirroot    = dirname(dirname(__FILE__));
 
 // File permissions on created directories in the $CFG->dataroot
