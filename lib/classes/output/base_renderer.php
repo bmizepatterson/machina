@@ -277,8 +277,7 @@ class base_renderer {
 		$html = $this->opencontainers->push('div', 'bar', array('class'=>'w3-bar w3-black'));
 		
 			$html .= '<a href="'.$CFG->wwwroot.'" class="w3-bar-item w3-button">MACHINA</a>';
-			$html .= '<a href="'.$CFG->wwwroot.'/conjugate.php" class="w3-bar-item w3-button">Conjugate</a>';
-			$html .= '<a href="'.get_login_url().'" class="w3-bar-item w3-button w3-right">Login</a>';
+			$html .= '<a href="'.$CFG->wwwroot.'/conjugate.php" class="w3-bar-item w3-button w3-right">Conjugate</a>';
 			$html .= '<a href="'.$CFG->wwwroot.'/admin/lingua/editexpressions.php" class="w3-bar-item w3-button w3-right">Expressions</a>';
 			$html .= '<a href="'.$CFG->wwwroot.'/admin/verba/editverbs.php" class="w3-bar-item w3-button w3-right">Verbs</a>';
 		
