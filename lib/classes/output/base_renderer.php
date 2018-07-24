@@ -312,7 +312,7 @@ class base_renderer {
 			
 			// Print a link to phpmyadmin
 			$output .= '<div class="w3-panel w3-center">
-						<a class="w3-button w3-black" href="' . $CFG->wwwroot . '/phpmyadmin/index.php" target="_blank">phpMyAdmin</a>
+						<a class="w3-button w3-black" href="/phpmyadmin/index.php" target="_blank">phpMyAdmin</a>
 						<a class="w3-button w3-black" href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3 CSS</a>
 					  </div>';
 			$output .= $this->opencontainers->pop('debuginfo');
