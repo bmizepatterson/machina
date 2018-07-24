@@ -143,4 +143,4 @@ shutdown_manager::initialize();
 // Prepare session
 define('NO_MACHINA_COOKIES', false);    // Turn on cookies
 $CFG->sessiontimeout = 7200;            // Timeout after 2 hours
-\session\manager::start();
+// \session\manager::start();
