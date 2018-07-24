@@ -657,7 +657,7 @@ function initialise_fullme() {
     // $CFG->sslproxy specifies if external SSL appliance is used
     // (That is, the Machina server uses http, with an external box translating everything to https).
     if (empty($CFG->sslproxy)) {
-        if ($rurl['scheme'] === 'http' and isset($wwwroot['scheme']) and $wwwroot['scheme'] === 'https') {
+        if ($rurl['scheme'] === 'http' and !empty($wwwroot['scheme']) and $wwwroot['scheme'] === 'https') {
             if (defined('REQUIRE_CORRECT_ACCESS') && REQUIRE_CORRECT_ACCESS) {
                 throw new machina_exception('HHTPS Connection Required', "For security reasons, only https connections are allowed.");
             } else {
