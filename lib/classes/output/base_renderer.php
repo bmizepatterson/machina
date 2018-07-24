@@ -395,7 +395,7 @@ class base_renderer {
 	            $message .= '<p><strong>Stack trace:</strong> '.format_backtrace($backtrace).'</p>';
 	        }
 	        if ($obbuffer !== '' ) {
-	            $message .= '<div class="ob"><p><strong>Output buffer:</strong></p><pre>'.s($obbuffer).'</pre></div>';
+	            $message .= '<div class="ob"><p><strong>Output buffer:</strong></p>'.$obbuffer.'</div>';
 	        }
 	    }
 	    
