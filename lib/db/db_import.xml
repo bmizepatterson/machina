@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.0.10deb1
+- http://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Jul 24, 2018 at 03:11 PM
+- Server version: 5.5.54-0ubuntu0.14.04.1
+- PHP Version: 5.5.9-1ubuntu4.21
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="machina" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="config">
+                CREATE TABLE `config` (
+                  `id` int(10) NOT NULL DEFAULT '0',
+                  `name` char(255) NOT NULL,
+                  `value` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lingua_expression">
+                CREATE TABLE `lingua_expression` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `expression` varchar(255) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `expression` (`expression`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lingua_expression_tag">
+                CREATE TABLE `lingua_expression_tag` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `expression_id` int(11) NOT NULL,
+                  `tag_id` int(11) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `expression_id` (`expression_id`,`tag_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="partofspeech">
+                CREATE TABLE `partofspeech` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(20) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="sessions">
+                CREATE TABLE `sessions` (
+                  `id` int(10) NOT NULL AUTO_INCREMENT,
+                  `state` int(10) NOT NULL DEFAULT '0',
+                  `sid` char(128) NOT NULL,
+                  `userid` int(10) NOT NULL,
+                  `sessdata` text,
+                  `timecreated` int(10) NOT NULL,
+                  `timemodified` int(10) NOT NULL,
+                  `firstip` char(45) DEFAULT NULL,
+                  `lastip` char(45) DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `state` (`state`,`sid`,`timecreated`,`timemodified`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="user">
+                CREATE TABLE `user` (
+                  `id` int(10) NOT NULL AUTO_INCREMENT,
+                  `deleted` int(1) NOT NULL DEFAULT '0',
+                  `suspended` int(1) NOT NULL DEFAULT '0',
+                  `username` char(100) NOT NULL,
+                  `password` char(255) NOT NULL,
+                  `firstname` char(100) NOT NULL,
+                  `lastname` char(100) NOT NULL,
+                  `email` char(100) NOT NULL,
+                  `timezone` char(100) NOT NULL DEFAULT '99',
+                  `firstaccess` int(10) NOT NULL DEFAULT '0',
+                  `lastaccess` int(10) NOT NULL DEFAULT '0',
+                  `lastlogin` int(10) NOT NULL DEFAULT '0',
+                  `currentlogin` int(10) NOT NULL DEFAULT '0',
+                  `lastip` char(45) NOT NULL,
+                  `timecreated` int(10) NOT NULL DEFAULT '0',
+                  `timemodified` int(10) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`id`),
+                  KEY `username` (`username`),
+                  KEY `deleted` (`deleted`,`username`,`firstname`,`lastname`,`email`,`lastaccess`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="verb">
+                CREATE TABLE `verb` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `pp1` varchar(20) NOT NULL,
+                  `pp2` varchar(20) DEFAULT NULL,
+                  `pp3` varchar(20) DEFAULT NULL,
+                  `pp4` varchar(20) DEFAULT NULL,
+                  `verbgroup` int(11) DEFAULT NULL,
+                  `transitive` tinyint(1) DEFAULT NULL,
+                  `deponent` tinyint(1) DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `pp1` (`pp1`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+</pma_xml_export>
