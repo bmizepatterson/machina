@@ -77,13 +77,13 @@ class base_renderer {
         
         // CSS
         $output .= "\n".'<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">';
-        $output .= "\n".'<link rel="stylesheet" type="text/css" href="/machina/machina.css">';
+        $output .= "\n".'<link rel="stylesheet" type="text/css" href="'.$CFG->wwwroot.'/machina.css">';
         
         /// Material Icons
         $output .= "\n".'<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 
         // JS
-        $output .= "\n".'<script src="/machina/lib/js/machina.js"></script>';
+        $output .= "\n".'<script src="'.$CFG->wwwroot.'/lib/js/machina.js"></script>';
 
         return $output."\n";
     }
