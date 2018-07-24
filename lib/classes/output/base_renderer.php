@@ -65,24 +65,27 @@ class base_renderer {
     public function standard_head_html() {
         global $CFG;
         
-        $output = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "\n";
-        $output .= '<meta name="keywords" content="machina, ' . $this->page->title . '" />' . "\n";
+        $output = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+        $output .= "\n".'<meta name="keywords" content="machina, ' . $this->page->title . '" />';
         // This is only set by the {@link redirect()} method
         $output .= $this->metarefreshtag;
         // Check if a periodic refresh delay has been set and make sure we arn't
         // already meta refreshing
         if ($this->metarefreshtag=='' && $this->page->periodicrefreshdelay!==null) {
-            $output .= '<meta http-equiv="refresh" content="'.$this->page->periodicrefreshdelay.';url='.$this->page->url.'" />';
+            $output .= "\n".'<meta http-equiv="refresh" content="'.$this->page->periodicrefreshdelay.';url='.$this->page->url.'" />';
         }
         
         // CSS
-        $output .= '<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">';
-        $output .= '<link rel="stylesheet" type="text/css" href="'.$CFG->wwwroot.'/machina.css">';
+        $output .= "\n".'<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">';
+        $output .= "\n".'<link rel="stylesheet" type="text/css" href="/machina/machina.css">';
         
         /// Material Icons
-        $output .= '<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
+        $output .= "\n".'<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">';
 
-        return $output;
+        // JS
+        $output .= "\n".'<script src="/machina/lib/js/machina.js"></script>';
+
+        return $output."\n";
     }
     
     /**
@@ -222,6 +225,8 @@ class base_renderer {
         if (!$this->page->url) {
             throw new coding_exception('Page URL must be set before output begins.');
         }
+
+        $header = '';
         
         // TODO: COUNT LOGIN FAILURES
         /*
@@ -255,8 +260,9 @@ class base_renderer {
         }
         @header('Accept-Ranges: none');
         @header('Content-Language: '.$this->language);
-        
-        $header = '<html dir="ltr" lang="'.$this->language.'" xml:lang="'.$this->language.'">';
+
+        $header .= "<!DOCTYPE html>\n";        
+        $header .= '<html dir="ltr" lang="'.$this->language.'" xml:lang="'.$this->language.'">';
         $header .= $this->standard_head_html();
         
         $header .= $this->opencontainers->push('body', 'body');
@@ -295,24 +301,22 @@ class base_renderer {
         global $CFG, $DB, $PAGE, $SESSION, $USER;
         
         $output = $this->container_end_all();
-        $output .= $this->opencontainers->push('div', 'footer', array('id'=>'footer', 'class'=>'w3-container'));
+        $output .= $this->opencontainers->push('div', 'footer', array('id'=>'footer'));
         
         if ($CFG->debugdeveloper) {
-			$output .= $this->opencontainers->push('div', 'debuginfo', array('class'=>'w3-container w3-border'));
-			// Print page info for debugging if necessary
-			$output .= '<div class="pageinfo">' .
-					 //'<h3>$PAGE Info</h3><pre>'.htmlentities(print_r($PAGE, true)).'</pre>' .
-					 '<h3>$SESSION Info</h3><pre>'.htmlentities(print_r($SESSION, true)).'</pre>' .
-					 pr($USER, '$USER', true) .
-					 '</div>';
+            // Print special developer debug information
+			$output .= $this->opencontainers->push('div', 'debuginfo');
+			$output .= '<button onclick="expand_accordion('."'page_info'".')" class="w3-button w3-black w3-block w3-left-align">$PAGE Info</button>' .
+					   '<div id="page_info" class="w3-container w3-hide"><pre>'.htmlentities(print_r($PAGE, true)).'</pre></div>';
 					  
 			$perf_info = get_performance_info();
-			$output .= '<div class="performanceinfo w3-panel w3-center">' . $perf_info['html'] . '</div>';
+			$output .= '<button onclick="expand_accordion('."'perf_info'".')" class="w3-button w3-black w3-block w3-left-align">Performance Info</button>' .
+                       '<div id="perf_info" class="performanceinfo w3-container w3-hide">' . $perf_info['html'] . '</div>';
 			
 			// Print a link to phpmyadmin
-			$output .= '<div class="w3-panel w3-center">
-						<a class="w3-button w3-black" href="/phpmyadmin/index.php" target="_blank">phpMyAdmin</a>
-						<a class="w3-button w3-black" href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3 CSS</a>
+			$output .= '<div>
+						<a class="w3-button" href="/phpmyadmin/index.php" target="_blank">phpMyAdmin</a>
+						<a class="w3-button" href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3 CSS</a>
 					  </div>';
 			$output .= $this->opencontainers->pop('debuginfo');
 		}
