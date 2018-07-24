@@ -486,7 +486,7 @@ class early_renderer {
 
         // Too soon to initialise $OUTPUT, provide a couple of key methods.
         if ($method == 'fatal_error') {
-            return call_user_func_array(array('early_renderer', 'early_error', $arguments));
+            return call_user_func_array(array('early_renderer', 'early_error'), $arguments);
         }
 
         throw new coding_exception('Attempt to start output before enough information is known to initialise it.');
